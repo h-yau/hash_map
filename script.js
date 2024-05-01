@@ -61,11 +61,11 @@ const HashMap = () => {
   const remove = (key) => {
     key = String(key);
 
-    const bucketAtIndex = buckets[hash(key)];
+    const hashCode = hash(key);
 
-    if (!bucketAtIndex || bucketAtIndex.key != key) return false;
+    if (!buckets[hashCode] || buckets[hashCode].key != key) return false;
 
-    bucketAtIndex = null;
+    buckets[hashCode] = null;
     occupiedBuckets--;
     return true;
   };
